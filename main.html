@@ -58,7 +58,7 @@ attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</
 
 	info.update = function (props) {
 		this._div.innerHTML = '<h4>Відсоток заповідності в територіальних громадах України</h4>' +  (props ?
-			'<b>' + props.ADMIN_3 + ' '+ props.TYPE + '</b><br />' + props.pzf_vali_1.toFixed(2) + ' %' : 'Наведіть на громаду для отримання інформації');
+			'<b>' + props.ADMIN_3 + ' '+ props.TYPE + '</b><br />'+ 'Показник заповідності складає ' + props.pzf_vali_1.toFixed(2) + ' %' : 'Наведіть на громаду для отримання інформації');
 	};
 
 	info.addTo(map);
