@@ -35,16 +35,16 @@
 <script type="text/javascript" src="terhromad_borders_data.js"></script>
 
 <script type="text/javascript">
-
+	var mapboxAccessToken = 'pk.eyJ1IjoidmFkZW52bWFwa3lpdiIsImEiOiJja2RwczBzcXYwMjgzMnprdWVxMTB2aWU0In0.OBDKIqeo6YDnxaEZR4bdIA';
 	var map = L.map('map').setView([48.50782354469467, 33.511589555140965], 5.5);
 
-	var tiles = L.tileLayer('https://geodata.gki.com.ua/map/rtile/carto_2581348830234543152/ua/{z}/{x}/{y}.png', {
-		maxZoom: 18,
-		attribution: '',
-		
-		tileSize: 512,
-		zoomOffset: -1
-	}).addTo(map);
+	L.tileLayer('https://api.mapbox.com/styles/v1/vadenvmapkyiv/ckebblhya13tx1at7q6wpso5m/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoidmFkZW52bWFwa3lpdiIsImEiOiJja2RwczBzcXYwMjgzMnprdWVxMTB2aWU0In0.OBDKIqeo6YDnxaEZR4bdIA', {
+maxZoom: 18,
+attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+}).addTo(map);
+
 
 
 	// control that shows state info on hover
@@ -66,15 +66,14 @@
 
 	// get color depending on population pzf_vali_1 value
 	function getColor(d) {
-		return d > 100 ? '#005824' :
-			d > 50  ? '#238b45' :
-			d > 20  ? '#41ae76' :
-			d > 10  ? '#66c2a4' :
-			d > 5   ? '#99d8c9' :
-			d > 2.5   ? '#ccece6' :
-			d > 0   ? '#e5f5f9' : 
-			d = 0   ?'#e5f5f9' : '#99A1A6';
-	}
+    return d > 100 ? '#005a32' :
+           d > 50  ? '#238b45' :
+           d > 10  ? '#41ab5d' :
+           d > 5   ? '#74c476' :
+           d > 2   ? '#a1d99b' :
+           d > 1   ? '#c7e9c0' :
+                      '#edf8e9';
+}
 
 	function style(feature) {
 		return {
@@ -137,7 +136,7 @@
 	legend.onAdd = function (map) {
 
 		var div = L.DomUtil.create('div', 'info legend');
-		var grades = [0, 0, 2.5, 5, 10, 20, 50, 100];
+		var grades = [0, 2, 5, 10, 50, 100];
 		var labels = [];
 		var from, to;
 
